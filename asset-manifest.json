@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/DualCats/static/css/main.44538fa0.chunk.css",
+    "main.css": "/DualCats/static/css/main.5ecd60fb.chunk.css",
     "main.js": "/DualCats/static/js/main.5cf87b4c.chunk.js",
     "main.js.map": "/DualCats/static/js/main.5cf87b4c.chunk.js.map",
     "runtime-main.js": "/DualCats/static/js/runtime-main.41e2a210.js",
@@ -8,15 +8,15 @@
     "static/js/2.e90c7d26.chunk.js": "/DualCats/static/js/2.e90c7d26.chunk.js",
     "static/js/2.e90c7d26.chunk.js.map": "/DualCats/static/js/2.e90c7d26.chunk.js.map",
     "index.html": "/DualCats/index.html",
-    "precache-manifest.7292988c71caae40518e6ba783a38a55.js": "/DualCats/precache-manifest.7292988c71caae40518e6ba783a38a55.js",
+    "precache-manifest.680d12f8e5466b7c8326a26096c5b79a.js": "/DualCats/precache-manifest.680d12f8e5466b7c8326a26096c5b79a.js",
     "service-worker.js": "/DualCats/service-worker.js",
-    "static/css/main.44538fa0.chunk.css.map": "/DualCats/static/css/main.44538fa0.chunk.css.map",
+    "static/css/main.5ecd60fb.chunk.css.map": "/DualCats/static/css/main.5ecd60fb.chunk.css.map",
     "static/js/2.e90c7d26.chunk.js.LICENSE.txt": "/DualCats/static/js/2.e90c7d26.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.41e2a210.js",
     "static/js/2.e90c7d26.chunk.js",
-    "static/css/main.44538fa0.chunk.css",
+    "static/css/main.5ecd60fb.chunk.css",
     "static/js/main.5cf87b4c.chunk.js"
   ]
 }

@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "086335d4aebf4c0b300327d43ddc0ece",
+    "revision": "e2723bf0490274dcafd6cb52cbb1479b",
     "url": "/DualCats/index.html"
   },
   {
-    "revision": "3468b85c05d0400b4ee0",
-    "url": "/DualCats/static/css/main.44538fa0.chunk.css"
+    "revision": "c1647143b5146598192d",
+    "url": "/DualCats/static/css/main.5ecd60fb.chunk.css"
   },
   {
     "revision": "df6069ccba3888c02e34",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/DualCats/static/js/2.e90c7d26.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3468b85c05d0400b4ee0",
+    "revision": "c1647143b5146598192d",
     "url": "/DualCats/static/js/main.5cf87b4c.chunk.js"
   },
   {
