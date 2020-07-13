@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/JohnsonYe/DualCats/static/css/main.44538fa0.chunk.css",
+    "main.js": "/JohnsonYe/DualCats/static/js/main.5cf87b4c.chunk.js",
+    "main.js.map": "/JohnsonYe/DualCats/static/js/main.5cf87b4c.chunk.js.map",
+    "runtime-main.js": "/JohnsonYe/DualCats/static/js/runtime-main.17dba930.js",
+    "runtime-main.js.map": "/JohnsonYe/DualCats/static/js/runtime-main.17dba930.js.map",
+    "static/js/2.e90c7d26.chunk.js": "/JohnsonYe/DualCats/static/js/2.e90c7d26.chunk.js",
+    "static/js/2.e90c7d26.chunk.js.map": "/JohnsonYe/DualCats/static/js/2.e90c7d26.chunk.js.map",
+    "index.html": "/JohnsonYe/DualCats/index.html",
+    "precache-manifest.16a9045ecfd1290ae59c1f74645c9772.js": "/JohnsonYe/DualCats/precache-manifest.16a9045ecfd1290ae59c1f74645c9772.js",
+    "service-worker.js": "/JohnsonYe/DualCats/service-worker.js",
+    "static/css/main.44538fa0.chunk.css.map": "/JohnsonYe/DualCats/static/css/main.44538fa0.chunk.css.map",
+    "static/js/2.e90c7d26.chunk.js.LICENSE.txt": "/JohnsonYe/DualCats/static/js/2.e90c7d26.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.17dba930.js",
+    "static/js/2.e90c7d26.chunk.js",
+    "static/css/main.44538fa0.chunk.css",
+    "static/js/main.5cf87b4c.chunk.js"
+  ]
+}
