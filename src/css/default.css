@@ -1,0 +1,20 @@
+.wrapper {
+    background-color: #1c1c1c;
+    color: #afc0d4;
+}
+
+.body-container {
+    /* margin: 50px; */
+}
+
+.container {
+    max-width: 100%;
+}
+
+section {
+    margin: 10px;
+}
+
+.body-container .container {
+    margin-left: 30px;
+}
