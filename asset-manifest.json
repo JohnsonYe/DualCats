@@ -1,24 +1,23 @@
 {
   "files": {
     "main.css": "/static/css/main.b6f5b1d4.chunk.css",
-    "main.js": "/static/js/main.815dca30.chunk.js",
-    "main.js.map": "/static/js/main.815dca30.chunk.js.map",
+    "main.js": "/static/js/main.6c7e3989.chunk.js",
+    "main.js.map": "/static/js/main.6c7e3989.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.3bbf3189.js",
     "runtime-main.js.map": "/static/js/runtime-main.3bbf3189.js.map",
     "static/js/2.3f23d401.chunk.js": "/static/js/2.3f23d401.chunk.js",
     "static/js/2.3f23d401.chunk.js.map": "/static/js/2.3f23d401.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.94df0a41af5e96ae2c4cdf6b3b78a2e0.js": "/precache-manifest.94df0a41af5e96ae2c4cdf6b3b78a2e0.js",
+    "precache-manifest.5803364971772f57619a75a92771c19b.js": "/precache-manifest.5803364971772f57619a75a92771c19b.js",
     "service-worker.js": "/service-worker.js",
     "static/css/main.b6f5b1d4.chunk.css.map": "/static/css/main.b6f5b1d4.chunk.css.map",
     "static/js/2.3f23d401.chunk.js.LICENSE.txt": "/static/js/2.3f23d401.chunk.js.LICENSE.txt",
-    "static/media/milky.png": "/static/media/milky.e9de48b2.png",
-    "static/media/ucsd_triton.png": "/static/media/ucsd_triton.16007c49.png"
+    "static/media/milky.png": "/static/media/milky.e9de48b2.png"
   },
   "entrypoints": [
     "static/js/runtime-main.3bbf3189.js",
     "static/js/2.3f23d401.chunk.js",
     "static/css/main.b6f5b1d4.chunk.css",
-    "static/js/main.815dca30.chunk.js"
+    "static/js/main.6c7e3989.chunk.js"
   ]
 }
