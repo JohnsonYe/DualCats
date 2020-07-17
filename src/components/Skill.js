@@ -26,6 +26,9 @@ class Skill extends Component {
                 <li>
                     Version Control/tools
                 </li>
+                <li>
+                    Database
+                </li>
             </ul>
         </div>
 
