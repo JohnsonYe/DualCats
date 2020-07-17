@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './../css/personal_info.css';
-import ucsdTriton from './../images/ucsd_triton.png';
+// import ucsdTriton from './../images/ucsd_triton.png';
 
 const ABOUT_ME = "My name is Milky, Drink, eat, sleep, repeate every single day. Look at my belly, I am so fat";
 
