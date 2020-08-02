@@ -9,28 +9,25 @@ import Experience from './components/Experience';
 import './css/default.css';
 
 class App extends Component {
-  state = {
-    characters: []
-  };
-
-  removeCharacter = (index) => {
-    const {characters} = this.state;
-    this.setState({
-      characters: characters.filter((character, i) => {
-        return i !== index
-      })
-    });
+  constructor(props) {
+    super(props);
+    this.handleMouseMove = this.handleMouseMove.bind(this);
+    this.state = {
+      x: 0,
+      y: 0
+    }
   }
 
-  handleSubmit = (character) => {
-    this.setState({characters: [...this.state.characters, character]});
-  };
+  handleMouseMove(event) {
+    this.setState({
+      x: event.clientX,
+      y: event.clientY
+    });
+  }
 
   render() {  
     return (
       <div className="App">
-        {/* <Table characterData={this.state.characters} removeCharacter={this.removeCharacter} />
-        <Form handleSubmit={this.handleSubmit} /> */}
         <Header />
         <div className="container">
           <div className="row">
@@ -43,8 +40,11 @@ class App extends Component {
               <Skill />
             </div>
           </div>
-          
-          
+
+          <div style={{height: '100vh'}} onMouseMove={this.handleMouseMove}>
+            <h1>Move the mouse around!</h1>
+            <p>The current position is {this.state.x}, {this.state.y}</p>
+          </div>
         </div>
       </div>
     )

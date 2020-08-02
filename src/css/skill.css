@@ -1,10 +1,13 @@
-.skills {
-    /* display: inline-block;
-    margin-left: 30px;
-    vertical-align: top;
-    height: 30vh;
-    width: 100%;
-    padding: 30px; */
+.experience-bar-overall {
+    background-color: dimgray;
+    height: 18px;
+    border-radius: 4px;
+}
+
+.experience-bar-level {
+    background-color: green;
+    height: 18px;
+    border-radius: 4px;
 }
 
 .skills li {
@@ -13,4 +16,8 @@
 
 .skills ul {
     padding-left: 0;
+}
+
+.skill-list {
+    margin-bottom: 10px
 }
