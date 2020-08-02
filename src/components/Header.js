@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import profilePic from './../images/milky.png';
 import './../css/header.css';
 
-const PROFILE_NAME = "Milky Pie";
-const POSITION = "Big Fat Cat";
+const PROFILE_NAME = "Johnson Ye";
+const POSITION = "Software Engineer";
 const GITHUB_URL= "https://github.com/JohnsonYe";
 const LINKEDIN_URL = "https://www.linkedin.com/in/johnsonye0303/";
 

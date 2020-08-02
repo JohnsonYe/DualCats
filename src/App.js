@@ -4,6 +4,8 @@ import Form from './components/Form';
 import Header from './components/Header';
 import Personal_Info from './components/Personal_Info';
 import Skill from './components/Skill';
+import Education from './components/Education';
+import Experience from './components/Experience';
 import './css/default.css';
 
 class App extends Component {
@@ -30,9 +32,19 @@ class App extends Component {
         {/* <Table characterData={this.state.characters} removeCharacter={this.removeCharacter} />
         <Form handleSubmit={this.handleSubmit} /> */}
         <Header />
-        <div className="body-container container">
-          <Personal_Info />
-          <Skill />
+        <div className="container">
+          <div className="row">
+            <div className="col-8">
+              <Personal_Info />
+              <Experience />
+            </div>
+            <div className="col-4">
+              <Education />
+              <Skill />
+            </div>
+          </div>
+          
+          
         </div>
       </div>
     )

@@ -1,27 +1,24 @@
 import React, { Component } from 'react';
 import './../css/personal_info.css';
-// import ucsdTriton from './../images/ucsd_triton.png';
 
-const ABOUT_ME = "My name is Milky, Drink, eat, sleep, repeate every single day. Look at my belly, I am so fat";
+
+const ABOUT_ME = "Project lead of architecture design and develop microservices for IoT technology. Utilize API and modules in Nodejs for scalable websites architecture and real-time technology. Responsible for CI/CD pipeline management and development, develop automated vision regression testing tools for frontend user interface.";
 
 class Personal_Info extends Component {
     render () {
-        const aboutMe = <div className="about-me wrapper col">
+        const aboutMe = <div className="about-me wrapper">
                 <h2>About Me</h2>
                 <p>{ABOUT_ME}</p>
             </div>
         
-        const education = <div className="education wrapper col">
-            <h2>Education</h2>
-            University of California, San Diego
-        </div>
         return (
-            <section className="personal-info row">
+            <section className="personal-info-section section">
                 {aboutMe}
-                {education}
             </section>
         );
     }
 }
+
+
 
 export default Personal_Info;

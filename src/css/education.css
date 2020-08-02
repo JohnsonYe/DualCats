@@ -1,0 +1,17 @@
+.ucsd-triton-img {
+    max-width: 250px;
+}
+
+.Img-background {
+    background-color: white;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: 150px;
+    margin-right: auto;
+    margin-left: auto;
+    background-position-x: center;
+    background-position-y: center;
+    background-image: url("./../images/ucsd_logo.png");
+}

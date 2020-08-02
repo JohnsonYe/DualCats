@@ -1,20 +1,25 @@
 .wrapper {
     background-color: #1c1c1c;
     color: #afc0d4;
-}
-
-.body-container {
-    /* margin: 50px; */
+    padding: 25px 30px 25px 30px;
 }
 
 .container {
-    max-width: 100%;
+    max-width: unset;
+    padding: 15px 30px 15px 30px
 }
+
 
 section {
-    margin: 10px;
+    margin-bottom: 15px;
 }
 
-.body-container .container {
+
+/* .body-container .container {
     margin-left: 30px;
-}
+} */
+
+/* .sections-wrapper {
+    padding-top: 60px;
+    padding-bottom: 60px;
+} */

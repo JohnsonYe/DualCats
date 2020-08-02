@@ -1,0 +1,7 @@
+.company > div {
+    display: inline-block;
+}
+
+.company .years {
+    float: right;
+}
