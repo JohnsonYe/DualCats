@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.498b0a23.chunk.css",
-    "main.js": "/static/js/main.b65ecbaa.chunk.js",
-    "main.js.map": "/static/js/main.b65ecbaa.chunk.js.map",
+    "main.css": "/static/css/main.516c8e33.chunk.css",
+    "main.js": "/static/js/main.352ebbc8.chunk.js",
+    "main.js.map": "/static/js/main.352ebbc8.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.3bbf3189.js",
     "runtime-main.js.map": "/static/js/runtime-main.3bbf3189.js.map",
-    "static/js/2.3f23d401.chunk.js": "/static/js/2.3f23d401.chunk.js",
-    "static/js/2.3f23d401.chunk.js.map": "/static/js/2.3f23d401.chunk.js.map",
+    "static/js/2.5199e95a.chunk.js": "/static/js/2.5199e95a.chunk.js",
+    "static/js/2.5199e95a.chunk.js.map": "/static/js/2.5199e95a.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.e7a057b21d524fff7ccf0148807472d4.js": "/precache-manifest.e7a057b21d524fff7ccf0148807472d4.js",
+    "precache-manifest.d9d56a59e87fa5e7a9986000602355b9.js": "/precache-manifest.d9d56a59e87fa5e7a9986000602355b9.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.498b0a23.chunk.css.map": "/static/css/main.498b0a23.chunk.css.map",
-    "static/js/2.3f23d401.chunk.js.LICENSE.txt": "/static/js/2.3f23d401.chunk.js.LICENSE.txt",
+    "static/css/main.516c8e33.chunk.css.map": "/static/css/main.516c8e33.chunk.css.map",
+    "static/js/2.5199e95a.chunk.js.LICENSE.txt": "/static/js/2.5199e95a.chunk.js.LICENSE.txt",
     "static/media/milky.png": "/static/media/milky.e9de48b2.png",
     "static/media/education.css": "/static/media/ucsd_logo.75aacf42.png"
   },
   "entrypoints": [
     "static/js/runtime-main.3bbf3189.js",
-    "static/js/2.3f23d401.chunk.js",
-    "static/css/main.498b0a23.chunk.css",
-    "static/js/main.b65ecbaa.chunk.js"
+    "static/js/2.5199e95a.chunk.js",
+    "static/css/main.516c8e33.chunk.css",
+    "static/js/main.352ebbc8.chunk.js"
   ]
 }
