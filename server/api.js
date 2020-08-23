@@ -1,5 +1,6 @@
 const express = require('express')
 const http    = require("http");
+const https   = require("https");
 const cors    = require("cors");
 const morgan  = require("morgan");
 require('dotenv').config();
@@ -18,7 +19,7 @@ api.use(bodyParser.urlencoded({
 }));
 api.use(fileUpload());
 // public floder
-api.use(express.static('./build'));
+// api.use(express.static('./build'));
 
 // api.use("/build", (req, res, next) => {
 //     req.url = path.basename(req.originalUrl);
@@ -38,8 +39,18 @@ api.use((error, req, res, next) => {
 });
 
 
-http.createServer(api).listen(process.env.API_SERVER_PORT, () => {
-    console.log('listening at port %s', process.env.API_SERVER_PORT);
-});
+if (process.env.USE_SSL) {
+    http.createServer(api).listen(process.env.API_SERVER_PORT, () => {
+        console.log('listening at port %s', process.env.API_SERVER_PORT);
+    });
+} else {
+    const fs = require('fs');
+    https.createServer({
+        key: fs.readFileSync('../pem/server-key.pem'),
+        cert: fs.readFileSync('../pem/server-cert.pem')
+    }, api)
+    .listen(process.env.API_SERVER_PORT);
+}
+
 
 module.exports.api = api;
