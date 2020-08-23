@@ -3,15 +3,14 @@ import axios, { post } from 'axios';
 
 class S3Bucket {
     constructor () {
-        // this.state = {
-        //     imageRawData: []
-        // };
         this.getRawImageDataFromBucket = this.getRawImageDataFromBucket.bind(this);
         this.uploadFormDataToBucket    = this.uploadFormDataToBucket.bind(this);
+        this.apiURL = process.env.REACT_APP_AWS_API_URL || "http://localhost:8084";
     }
     
     getRawImageDataFromBucket() {
-        return fetch("http://localhost:8084/api/v1/getImageRawData")
+        console.log(process.env.REACT_APP_AWS_API_URL);
+        return fetch(`${this.apiURL}/api/v1/getImageRawData`)
             .then(response => response.json())
             .then((data) => {
                 return data.rawData;
@@ -19,7 +18,7 @@ class S3Bucket {
     }
 
     deleteObject(key) {
-        return fetch(`http://localhost:8084/api/v1/deleteFileFromBucket/${key}`, {method: 'delete'})
+        return fetch(`${this.apiURL}/api/v1/deleteFileFromBucket/${key}`, {method: 'delete'})
                 .then(response => 
                     response.json().then(json => {
                         return json;
@@ -32,7 +31,7 @@ class S3Bucket {
         //     console.log(res.statusText)
         // })
         const config = { headers: { 'content-type': 'multipart/form-data' } };
-        return axios.post("http://localhost:8084/api/v1/uploadFileTobucket", formData, config)
+        return axios.post(`${this.apiURL}/api/v1/uploadFileTobucket`, formData, config)
             .then((data) => {
                 return data.data.response;
             }).catch((error) => {
