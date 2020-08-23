@@ -6,6 +6,7 @@ require('dotenv').config();
 const routes = require('./libs/routes.js');
 const bodyParser = require("body-parser");
 const fileUpload = require('express-fileupload');
+const path = require('path');
 const api = express();
 
 api.use(morgan('tiny'));
@@ -17,7 +18,13 @@ api.use(bodyParser.urlencoded({
 }));
 api.use(fileUpload());
 // public floder
-api.use(express.static('./build'));
+// api.use(express.static('./build'));
+
+// api.use("/build", (req, res, next) => {
+//     req.url = path.basename(req.originalUrl);
+//     express.static(__dirname + '/static')(req, res, next);
+// });
+// api.use("/build", express.static(path.join(__dirname, "build")))
 
 api.use("/api/v1", routes);
 

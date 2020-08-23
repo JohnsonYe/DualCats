@@ -5,7 +5,8 @@ class S3Bucket {
     constructor () {
         this.getRawImageDataFromBucket = this.getRawImageDataFromBucket.bind(this);
         this.uploadFormDataToBucket    = this.uploadFormDataToBucket.bind(this);
-        this.apiURL = process.env.REACT_APP_AWS_API_URL || "http://localhost:8084";
+        // this.apiURL = process.env.REACT_APP_AWS_API_URL || "http://localhost:8084";
+        this.apiURL = "http://ec2-54-183-23-31.us-west-1.compute.amazonaws.com:8084"
     }
     
     getRawImageDataFromBucket() {
