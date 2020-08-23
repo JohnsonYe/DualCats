@@ -1,0 +1,236 @@
+/* #innovative-container {
+    position: relative;
+
+}
+
+.outter-circle {
+    position: relative;
+    top: 75px;
+    width: 600px;
+    height: 600px;
+    border-radius: 100%;
+    -webkit-animation: spin-right 20s linear infinite;
+    animation: spin-right 30s linear infinite;
+    margin: 0 auto;
+}
+
+.info-section {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
+    border: 2px #4A437F solid;
+    -webkit-animation: spin-left 20s linear infinite;
+    animation: spin-left 30s linear infinite;
+    text-align: center;
+    line-height: 200px;
+    font-size: x-large;
+    background-color: #1c1c1c;
+    color: #afc0d4;
+    pointer-events: auto;
+}
+
+.outter-circle:hover,
+.info-section:hover,
+#section-main-contenct:hover
+ {
+    -webkit-animation: stop-spin;
+    animation: stop-spin;
+    background-color:red
+    
+}
+
+.outter-circle {
+    pointer-events: none;
+}
+
+#section-main-contenct {
+    position: absolute;
+    height: 400px;
+    width: 400px;
+    border-radius: 100%;
+    border: 2px #4A437F solid;
+    top: 100px;
+    left: 100px;
+    -webkit-animation: spin-left 20s linear infinite;
+    animation: spin-left 30s linear infinite;
+    text-align: center;
+}
+
+#experience.info-section {
+    top: -30px;
+    left: -6px;
+}
+
+#education.info-section {
+    top: -68px;
+    left: 350px;
+
+}
+
+#skill.info-section {
+    top: 230px;
+    left: 508px;
+}
+
+#aboutMySelf.info-section {
+    top: 490px;
+    left: 318px;
+}
+
+#project.info-section {
+    top: 376px;
+    left: -54px;
+}
+
+@keyframes spin-right {
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin-left {
+    100% {
+        -webkit-transform: rotate(-360deg);
+        -moz-transform: rotate(-360deg);
+        -ms-transform: rotate(-360deg);
+        -o-transform: rotate(-360deg);
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes stop-spin {
+    100% {
+        -webkit-animation-play-state: paused;
+        -moz-animation-play-state: paused;
+        -o-animation-play-state: paused;
+        animation-play-state: paused;
+    }
+} */
+
+
+/* #innovative-container { 
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.info-section{
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+
+    position: relative;
+    margin: 0;
+    z-index: 0;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    flex-basis: 100%;
+    flex-grow: 0;
+}
+
+.info-section:hover {
+    filter: brightness(1.2);
+} */
+
+/* #innovative-container { 
+    display: flex;
+    max-height: 100%;
+}
+
+.info-section {
+    margin: 0;
+    z-index: 0;
+    position: relative;
+    outline: 1px solid #ddd;
+    opacity: .95;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    flex-basis: 100%;
+    flex-grow: 0;
+} */
+
+
+
+
+
+
+.grid>*:hover, 
+.grid>*>*:hover {
+  flex-grow: 10;
+}
+
+.grid>*>*:hover {
+  box-shadow: 0 4px 5px -2px rgba(0, 0, 0, .2), 0 7px 10px 1px rgba(0, 0, 0, .14), 0 2px 16px 1px rgba(0, 0, 0, .12);
+  z-index: 1;
+  opacity: 1;
+  font-size: 5rem;
+}
+.grid:hover>*:not(:hover) {
+  flex-grow: 0;
+  max-height: 0;
+  overflow: hidden;
+}
+.grid>*:hover>*:not(:hover) {
+  flex-grow: 0;
+  flex-basis: 0;
+  overflow: hidden;
+}
+.grid>*,
+.grid>*>* {
+  transition: all .6s cubic-bezier(0.5, 0, 0.3, 1);
+}
+
+.grid {
+  flex-direction: column;
+  min-height: calc(100vh - 30px);
+  box-sizing: border-box;
+}
+
+.grid,
+.grid>* {
+  display: flex;
+  max-height: 100%;
+}
+
+.grid>* {
+  flex-direction: row;
+  margin: 0;
+}
+
+.grid>*,
+.grid>*>* {
+  flex-grow: 1;
+}
+
+.grid>*>* {
+  margin: 0;
+  z-index: 0;
+  position: relative;
+  background-color: #fff;
+  outline: 1px solid #ddd;
+  opacity: .95;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  font-size: 3rem;
+  overflow: hidden;
+  max-width: 100%;
+  flex-basis: 100%;
+  flex-grow: 0;
+}

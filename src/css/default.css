@@ -1,3 +1,20 @@
+html,
+body,
+#root,
+.App {
+    height: 100%;
+}
+
+/* html,
+#root {
+    background-image: linear-gradient(#E9E7E7, #E4E2E3);
+} */
+
+body {
+    min-height: 100%;
+    background-color: #E9E7E7;
+}
+
 .wrapper {
     background-color: #1c1c1c;
     color: #afc0d4;
@@ -15,6 +32,24 @@ section {
     margin-bottom: 15px;
 }
 
+.navbar-list {
+    display: inline-block;
+}
+
+.navbar {
+    /* background-color: #1c1c1c; */
+    padding: 25px 30px 25px 30px;
+    position: absolute;
+    z-index: 999;
+}
+
+.navbar .nav-link,
+.navbar .nav-logo {
+    /* color: #afc0d4; */
+    /* color: #1c1c1c; */
+    color: #D2B48C;
+    text-decoration: none;
+}
 
 /* .body-container .container {
     margin-left: 30px;

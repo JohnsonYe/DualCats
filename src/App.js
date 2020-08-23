@@ -1,52 +1,56 @@
 import React, {Component} from 'react';
-import Table from './components/Table';
-import Form from './components/Form';
-import Header from './components/Header';
-import Personal_Info from './components/Personal_Info';
-import Skill from './components/Skill';
-import Education from './components/Education';
-import Experience from './components/Experience';
 import './css/default.css';
+
+// Rounter
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
+// link
+import Home from './components/pages/home';
+import AboutMe from './components/pages/aboutMe';
+import Contact from './components/pages/contact';
+import CatsGallery from './components/pages/catsGallery';
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.handleMouseMove = this.handleMouseMove.bind(this);
-    this.state = {
-      x: 0,
-      y: 0
-    }
+    // this.handleMouseMove = this.handleMouseMove.bind(this);
+    // this.state = {
+    //   x: 0,
+    //   y: 0
+    // }
   }
 
-  handleMouseMove(event) {
-    this.setState({
-      x: event.clientX,
-      y: event.clientY
-    });
-  }
+  // handleMouseMove(event) {
+  //   this.setState({
+  //     x: event.clientX,
+  //     y: event.clientY
+  //   });
+  // }
+
+  
 
   render() {  
     return (
-      <div className="App">
-        <Header />
-        <div className="container">
-          <div className="row">
-            <div className="col-8">
-              <Personal_Info />
-              <Experience />
-            </div>
-            <div className="col-4">
-              <Education />
-              <Skill />
-            </div>
-          </div>
-
-          <div style={{height: '100vh'}} onMouseMove={this.handleMouseMove}>
-            <h1>Move the mouse around!</h1>
-            <p>The current position is {this.state.x}, {this.state.y}</p>
-          </div>
+      <Router>
+        <div className="App">
+          
+          <nav className='navbar'>
+            <div><Link to={'/'} className="nav-link nav-logo"><h1>Dualcats</h1></Link></div>
+            
+            <ul>
+              <li className='navbar-list home'><Link to={'/'} className="nav-link">Home</Link></li>
+              {/* <li className='navbar-list contact'><Link to={'/contact'} className="nav-link">Contact</Link></li> */}
+              {/* <li className='navbar-list aboutme'><Link to={'/aboutme'} className="nav-link">About Me</Link></li> */}
+              <li className='navbar-list catsGallery'><Link to={'/catsGallery'} className="nav-link">Gallery</Link></li>
+            </ul>
+          </nav>
+          <Switch>
+            <Route exact path='/' component={Home}/>
+            <Route path='/aboutme' component={AboutMe} />
+            <Route path='/contact' component={Contact} />
+            <Route path='/catsGallery' component={CatsGallery} />
+          </Switch>
         </div>
-      </div>
+      </Router>
     )
   }
 }

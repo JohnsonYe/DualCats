@@ -1,0 +1,66 @@
+.cats-gallery-button {
+    position: relative;
+    top: 50%;
+    /* transform: translateY(-50%); */
+    font-size: 2.5rem;
+    background-color: Transparent;
+    cursor:pointer;
+    overflow: hidden;
+    line-height: 60px;
+    letter-spacing: 0.045em;
+    display: inline-block;   
+    width: 277px;
+}
+
+.cats-gallery-button svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.cats-gallery-button svg rect {
+    stroke-width: 4;
+    stroke-dasharray: 353, 0;
+    stroke-dashoffset: 0;
+    -webkit-transition: all 600ms ease;
+    transition: all 600ms ease;
+}
+
+.cats-gallery-button span{
+  overflow:auto;
+  background: rgb(255,130,130);
+  background: -moz-linear-gradient(left,   #772f1a 30%, #f2a65a 100%);
+  background: -webkit-linear-gradient(left,  #772f1a 30%,#f2a65a 100%);
+  background: linear-gradient(to right,  #772f1a 30%,#f2a65a 100%);
+  /* filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8282', endColorstr='#e178ed',GradientType=1 ); */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cats-gallery-button:hover svg rect {
+    stroke-width: 4;
+    stroke-dasharray: 196, 543;
+    stroke-dashoffset: 437;
+}
+
+.gallery-button-section {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.hompage-section {
+    position: relative;
+    height: 100%;
+}
+
+.homepage-background-image { 
+    position: relative;
+    background-image: url("./../images/homepage-image.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+}

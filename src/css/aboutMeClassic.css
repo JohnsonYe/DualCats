@@ -1,0 +1,52 @@
+/* Skill section */
+.experience-bar-overall {
+    background-color: dimgray;
+    height: 18px;
+    border-radius: 4px;
+}
+
+.experience-bar-level {
+    background-color: green;
+    height: 18px;
+    border-radius: 4px;
+}
+
+.skills li {
+    list-style: none;
+}
+
+.skills ul {
+    padding-left: 0;
+}
+
+.skill-list {
+    margin-bottom: 10px
+}
+
+/* Experience section */
+.company > div {
+    display: inline-block;
+}
+
+.company .years {
+    float: right;
+}
+
+/* education */
+.ucsd-triton-img {
+    max-width: 250px;
+}
+
+.Img-background {
+    background-color: white;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: 150px;
+    margin-right: auto;
+    margin-left: auto;
+    background-position-x: center;
+    background-position-y: center;
+    background-image: url("./../images/ucsd_logo.png");
+}
