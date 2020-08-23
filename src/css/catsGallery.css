@@ -97,7 +97,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 30px;
-
+    grid-row-gap: 100px;
     padding: 0 50px;
 
 }

@@ -18,7 +18,7 @@ api.use(bodyParser.urlencoded({
 }));
 api.use(fileUpload());
 // public floder
-// api.use(express.static('./build'));
+api.use(express.static('./build'));
 
 // api.use("/build", (req, res, next) => {
 //     req.url = path.basename(req.originalUrl);
