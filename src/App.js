@@ -9,40 +9,36 @@ import AboutMe from './components/pages/aboutMe';
 import Contact from './components/pages/contact';
 import CatsGallery from './components/pages/catsGallery';
 
+
+
 class App extends Component {
   constructor(props) {
     super(props);
-    // this.handleMouseMove = this.handleMouseMove.bind(this);
-    // this.state = {
-    //   x: 0,
-    //   y: 0
-    // }
+    this.state = {
+      isSignIn: false
+    };
+
   }
-
-  // handleMouseMove(event) {
-  //   this.setState({
-  //     x: event.clientX,
-  //     y: event.clientY
-  //   });
-  // }
-
-  
-
-  render() {  
+  render() {
     return (
       <Router>
         <div className="App">
+          <div className="app-header">
+            <nav className='navbar'>
+              <div><Link to={'/'} className="nav-link nav-logo"><h1>Dualcats</h1></Link></div>
+              <ul>
+                <li className='navbar-list home'><Link to={'/'} className="nav-link">Home</Link></li>
+                {/* <li className='navbar-list contact'><Link to={'/contact'} className="nav-link">Contact</Link></li> */}
+                {/* <li className='navbar-list aboutme'><Link to={'/aboutme'} className="nav-link">About Me</Link></li> */}
+                <li className='navbar-list catsGallery'><Link to={'/catsGallery'} className="nav-link">Gallery</Link></li>
+                {/* <li className='navbar-list myPets'><Link to={'/catsGallery'} className="nav-link">My Pets</Link></li> */}
+              </ul>
+            </nav>
+            <div>
+
+            </div>
+          </div>
           
-          <nav className='navbar'>
-            <div><Link to={'/'} className="nav-link nav-logo"><h1>Dualcats</h1></Link></div>
-            
-            <ul>
-              <li className='navbar-list home'><Link to={'/'} className="nav-link">Home</Link></li>
-              {/* <li className='navbar-list contact'><Link to={'/contact'} className="nav-link">Contact</Link></li> */}
-              {/* <li className='navbar-list aboutme'><Link to={'/aboutme'} className="nav-link">About Me</Link></li> */}
-              <li className='navbar-list catsGallery'><Link to={'/catsGallery'} className="nav-link">Gallery</Link></li>
-            </ul>
-          </nav>
           <Switch>
             <Route exact path='/' component={Home}/>
             <Route path='/aboutme' component={AboutMe} />

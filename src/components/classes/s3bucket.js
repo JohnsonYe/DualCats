@@ -1,15 +1,29 @@
 import axios from 'axios';
+import aws from 'aws-sdk';
+
 
 class S3Bucket {
     constructor () {
         this.getRawImageDataFromBucket = this.getRawImageDataFromBucket.bind(this);
         this.uploadFormDataToBucket    = this.uploadFormDataToBucket.bind(this);
-        this.apiURL = "https://ec2-18-144-165-120.us-west-1.compute.amazonaws.com"
+        this.apiURI = process.env.API_URI;
+        this.s3 = new aws.S3();
     }
-     
+    
+    getObject(folderName = 'dualcats') {
+        try {
+            const response = this.s3.listObjectsV2({
+                Bucket: BUCKET_NAME,
+                Prefix: folderName
+            }).promise();
+            return response;
+        } catch (err) {
+            throw new Error("Fail to get data from S3 bucket.", err);
+        }
+    }
+
     getRawImageDataFromBucket() {
-        console.log(process.env.REACT_APP_AWS_API_URL);
-        return fetch(`${this.apiURL}/api/v1/getImageRawData`)
+        return fetch(`${this.apiURI}/api/v1/getImageRawData`)
             .then(response => response.json())
             .then((data) => {
                 return data.rawData;
@@ -17,7 +31,7 @@ class S3Bucket {
     }
 
     deleteObject(key) {
-        return fetch(`${this.apiURL}/api/v1/deleteFileFromBucket/${key}`, {method: 'delete'})
+        return fetch(`${this.apiURI}/api/v1/deleteFileFromBucket/${key}`, {method: 'delete'})
                 .then(response => 
                     response.json().then(json => {
                         return json;
@@ -26,7 +40,7 @@ class S3Bucket {
 
     uploadFormDataToBucket(formData) {
         const config = { headers: { 'content-type': 'multipart/form-data' } };
-        return axios.post(`${this.apiURL}/api/v1/uploadFileTobucket`, formData, config)
+        return axios.post(`${this.apiURI}/api/v1/uploadFileTobucket`, formData, config)
             .then((data) => {
                 return data.data.response;
             }).catch((error) => {

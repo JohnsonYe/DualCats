@@ -10,7 +10,6 @@ class CatsGallery extends Component {
     this.onDeleteImageListener = this.onDeleteImageListener.bind(this);
     this.onFormSubmitHandler = this.onFormSubmitHandler.bind(this);
     this.onChangeSelectedFile = this.onChangeSelectedFile.bind(this);
-    
     this.catBreedsCategory = [
         "Abyssinian",
         "Aegean",

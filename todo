@@ -1,6 +1,3 @@
-server api
-
-* [X] connect to s3 bucket
-* [X] get all list in bucket folder and image keys buffer
-* [X] upload image to s3 bucket
-* [X] delete image from s3 bucket
+* [ ] Build webpack
+* [ ] make script runs in webpack
+* [ ] join express server to react app
