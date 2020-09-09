@@ -24,6 +24,12 @@ module.exports = () => {
                 {
                     test: /\.(jpg|png)$/,
                     use: { loader: 'url-loader'}
+                },
+
+               
+                {
+                    test: /\.s[ac]ss$/i,
+                    use: ['style-loader', 'css-loader', 'sass-loader']
                 }
             ]
         },
@@ -35,7 +41,7 @@ module.exports = () => {
             new DefinePlugin({
                 "process.env": {
                     NODE_ENV: JSON.stringify(process.env.NODE_ENV || "development"),
-                    API_URI: JSON.stringify("https://api.dualcats.com")
+                    API_URI: JSON.stringify(process.env.API_URI || "http://localhost:8084")
                 }
             })
         ],
@@ -45,3 +51,8 @@ module.exports = () => {
         }
     }
 }
+
+// {
+//     test: /\.s[ac]ss$/i,
+//     use: ['style-loader', 'sass-loader']
+// },

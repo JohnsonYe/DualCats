@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
 import './css/default.css';
+// import './sass/app.sass';
 
 // Rounter
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
+
 // link
 import Home from './components/pages/home';
 import AboutMe from './components/pages/aboutMe';
 import Contact from './components/pages/contact';
 import CatsGallery from './components/pages/catsGallery';
+import UserModal from './components/pages/login';
 
 
 
@@ -15,15 +18,65 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isSignIn: false
+      isSignIn: false,
+      user: "",
+      showModal: false,
+      // userMenuOpen: false,
     };
 
+    this.handleSignIn = this.handleSignIn.bind(this);
+    this.showLoginModal = this.showLoginModal.bind(this);
+    this.hideLoginModal = this.hideLoginModal.bind(this);
+
   }
+
+  handleSignIn () {
+    this.showLoginModal().bind(this);
+    // this.setState({
+    //   isSignIn: !this.state.isSignIn,
+    //   user: "Johnson"
+    // });
+
+  }
+  
+  showLoginModal() {
+    this.setState({showModal: true});
+    console.log(this.state);
+  }
+
+  hideLoginModal() {
+    this.setState({showModal: false});
+  }
+
   render() {
+    let signInSection;
+    /**
+     * This section handle sign in state
+     * after oauth finished in backend
+     * i will change the part have capable to sign in
+     */
+    if (this.state.isSignIn) { 
+      signInSection = (
+          <>
+            <a>
+              <i className="fa fa-user" aria-hidden="true">welcome {this.state.user}</i>
+            </a>
+            
+            <ul className="user-dropdown-menu">
+              <li className="dropdown-item-1"><i className="fa fa-user" aria-hidden="true">Profile</i></li>
+              <li className="dropdown-item-2"><i className="fa fa-cogs" aria-hidden="true">Setting</i></li>
+              <li className="dropdown-item-3"><a onClick={this.handleSignIn}><i className="fa fa-sign-out" aria-hidden="true">Sign Out</i></a></li>
+            </ul>
+          </>
+      );
+    } else {
+      signInSection = (<a onClick={this.showLoginModal}><i className="fa fa-sign-in" aria-hidden="true">Sign in</i></a>);
+    }
+
     return (
       <Router>
         <div className="App">
-          <div className="app-header">
+          {/* <div className="app-header"> */}
             <nav className='navbar'>
               <div><Link to={'/'} className="nav-link nav-logo"><h1>Dualcats</h1></Link></div>
               <ul>
@@ -33,11 +86,12 @@ class App extends Component {
                 <li className='navbar-list catsGallery'><Link to={'/catsGallery'} className="nav-link">Gallery</Link></li>
                 {/* <li className='navbar-list myPets'><Link to={'/catsGallery'} className="nav-link">My Pets</Link></li> */}
               </ul>
+              <div className="sign-in-section" >
+                {signInSection}
+              </div>
             </nav>
-            <div>
 
-            </div>
-          </div>
+            <UserModal show={this.state.showModal} handleClose={this.hideLoginModal} />
           
           <Switch>
             <Route exact path='/' component={Home}/>
@@ -50,5 +104,18 @@ class App extends Component {
     )
   }
 }
+
+// const Modal = ({handleClose, show, children}) => {
+//   const showHideClassName = show ? "modal display-block" : "modal display-none";
+
+//   return (
+//     <div className={showHideClassName}>
+//       <section className="modal-main">
+//         {children}
+//         <button onClick={handleClose}>close</button>
+//       </section>
+//     </div>
+//   );
+// }
 
 export default App;

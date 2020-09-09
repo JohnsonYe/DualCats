@@ -33,7 +33,7 @@ class CatsGallery extends Component {
   }
 
   componentDidMount() {
-      this.bucket.getRawImageDataFromBucket()
+      this.bucket.getRawImage()
         .then((rawData) => {
             console.log(rawData);
             let imageList = [];
@@ -48,16 +48,6 @@ class CatsGallery extends Component {
         }).catch((err) => {
             this.setState({isProcessImageSuccess: false});
         })
-  }
-
-  fileUploadHandler = () => {
-    const data = new FormData();
-    let base64 = (this.state.files[0].base64).split("base64,")[1];
-    data.append('base64', base64);
-    data.append('name', this.state.files[0].name);
-    this.bucket.uploadFormDataToBucket(data).then(()=>{
-        this.setState({isProcessImageSuccess: true});
-    })
   }
 
   onDeleteImageListener = (key) => {
@@ -76,7 +66,7 @@ class CatsGallery extends Component {
     e.preventDefault();
     const formData = new FormData();
     formData.append('file', this.state.selectedFile);
-    this.bucket.uploadFormDataToBucket(formData).then((data)=>{
+    this.bucket.uploadFile(formData).then((data)=>{
         console.log("got key", data);
         let update = this.state.imageData;
         let newImage = {
@@ -126,11 +116,11 @@ class CatsGallery extends Component {
     return (
         <div id="gallery-section">
             {/* {this.processRawImageData()} */}
-            <div className="search-section">
+            {/* <div className="search-section">
                 <div className="search-bar">
                     <input name="catsSearch" title="Search" type="text" placeholder="Search for cat breeds..."></input>
                 </div>
-            </div>
+            </div> */}
 
             {/* Cat bread tap list section */}
             <div className="tablist">
