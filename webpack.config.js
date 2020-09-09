@@ -1,7 +1,14 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { DefinePlugin } = require('webpack');
-
+var API_URI = "https://api.dualcats.com";
+var BUILD_ENVIROMENT = "production";
+for (var i = 0; i < process.argv.length; i++) {
+    if (process.argv[i] == "development") {
+        API_URI = "http://localhost.com:8084";
+        BUILD_ENVIROMENT = 'developement';
+    }
+}
 
 
 module.exports = () => {
@@ -33,15 +40,15 @@ module.exports = () => {
                 }
             ]
         },
-        mode: 'product',
+        mode: BUILD_ENVIROMENT,
         plugins: [
             new HtmlWebpackPlugin({
                 template: './src/index.html'
             }),
             new DefinePlugin({
                 "process.env": {
-                    NODE_ENV: JSON.stringify("production"),
-                    API_URI: JSON.stringify("https://api.dualcats.com")
+                    NODE_ENV: JSON.stringify(BUILD_ENVIROMENT),
+                    API_URI: JSON.stringify(API_URI)
                 }
             })
         ],
