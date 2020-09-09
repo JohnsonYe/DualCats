@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { DefinePlugin, EnvironmentPlugin } = require('webpack');
+const { DefinePlugin } = require('webpack');
 
 
 
@@ -40,8 +40,8 @@ module.exports = () => {
             }),
             new DefinePlugin({
                 "process.env": {
-                    NODE_ENV: JSON.stringify(process.env.NODE_ENV || "development"),
-                    API_URI: JSON.stringify(process.env.API_URI || "http://localhost:8084")
+                    NODE_ENV: JSON.stringify("production"),
+                    API_URI: JSON.stringify("https://api.dualcats.com")
                 }
             })
         ],
