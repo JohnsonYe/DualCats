@@ -54,7 +54,7 @@ class AboutMe extends Component {
 
     render() {
         return (
-            <div claassName="about-me-container">
+            <div className="about-me-container">
               <button onClick={this.styleChange}>Change style</button>
               <this.AboutMeSection />
             </div>

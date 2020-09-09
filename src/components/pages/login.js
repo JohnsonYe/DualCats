@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import User from './../classes/user'
 
-const UserModal = ({handleClose, show}) => {
+const UserModal = ({handleClose, handleSignIn, show}) => {
     const showHideClassName = show ? "user-modal display-flex" : "user-modal display-none";
     const [username, setUsername] = React.useState("");
     const [email, setEmail] = React.useState("");
@@ -13,7 +13,12 @@ const UserModal = ({handleClose, show}) => {
         let params = { email, password };
         let user = new User();
         user.login(params).then((data) =>{
-            console.log(data);
+            console.log(data.token);
+            /** TODO
+             *  Store token to cookies, user will need that to access for apis
+             */
+            handleSignIn(data.username);
+            handleClose();
         });
     }
 
@@ -22,7 +27,13 @@ const UserModal = ({handleClose, show}) => {
         let params = { username, email, password, repeat_password: repeatPassword };
         let user = new User();
         user.register(params).then((data) => {
-            console.log(data);
+            if (!data) {
+                console.log("Fail to register")
+            } else {
+                handleSignIn(data.username);
+                handleClose();
+
+            }
         });
     }
 

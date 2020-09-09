@@ -30,10 +30,14 @@ class User {
 
     register(params) {
         const rest = new Request();
-        console.log("Parameters", params);
         return rest.postFetch(`${this.apiURI}/api/v1/users/register`, params)
             .then(data => {
-                console.log(data);
+                if (data.success) {
+                    return data.data;
+                } else {
+                    return data.success;
+                }
+
             })
     }
 }

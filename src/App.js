@@ -3,7 +3,7 @@ import './css/default.css';
 // import './sass/app.sass';
 
 // Rounter
-import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 // link
 import Home from './components/pages/home';
@@ -13,7 +13,6 @@ import CatsGallery from './components/pages/catsGallery';
 import UserModal from './components/pages/login';
 
 
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -21,27 +20,36 @@ class App extends Component {
       isSignIn: false,
       user: "",
       showModal: false,
+      redirect: false
       // userMenuOpen: false,
     };
 
-    this.handleSignIn = this.handleSignIn.bind(this);
     this.showLoginModal = this.showLoginModal.bind(this);
     this.hideLoginModal = this.hideLoginModal.bind(this);
 
-  }
-
-  handleSignIn () {
-    this.showLoginModal().bind(this);
-    // this.setState({
-    //   isSignIn: !this.state.isSignIn,
-    //   user: "Johnson"
-    // });
+    this.handleSignIn   = this.handleSignIn.bind(this);
+    this.handleLogout   = this.handleLogout.bind(this);
 
   }
-  
+
+  handleSignIn (username) {
+    this.setState({
+      isSignIn: !this.state.isSignIn,
+      user: username
+    });
+  }
+
+  handleLogout () {
+    this.setState({
+      isSignIn: !this.state.isSignIn,
+      user: "",
+      redirect: true
+    });
+    window.location.reload(false);
+  }
+
   showLoginModal() {
     this.setState({showModal: true});
-    console.log(this.state);
   }
 
   hideLoginModal() {
@@ -59,13 +67,13 @@ class App extends Component {
       signInSection = (
           <>
             <a>
-              <i className="fa fa-user" aria-hidden="true">welcome {this.state.user}</i>
+              <i className="fa fa-user" aria-hidden="true">Welcome {this.state.user}</i>
             </a>
             
             <ul className="user-dropdown-menu">
               <li className="dropdown-item-1"><i className="fa fa-user" aria-hidden="true">Profile</i></li>
               <li className="dropdown-item-2"><i className="fa fa-cogs" aria-hidden="true">Setting</i></li>
-              <li className="dropdown-item-3"><a onClick={this.handleSignIn}><i className="fa fa-sign-out" aria-hidden="true">Sign Out</i></a></li>
+              <li className="dropdown-item-3"><a onClick={this.handleLogout}><i className="fa fa-sign-out" aria-hidden="true">Sign Out</i></a></li>
             </ul>
           </>
       );
@@ -90,8 +98,7 @@ class App extends Component {
                 {signInSection}
               </div>
             </nav>
-
-            <UserModal show={this.state.showModal} handleClose={this.hideLoginModal} />
+            <UserModal show={this.state.showModal} handleClose={this.hideLoginModal} handleSignIn={this.handleSignIn}/>
           
           <Switch>
             <Route exact path='/' component={Home}/>
