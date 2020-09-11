@@ -1,0 +1,204 @@
+.user-modal {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.backdrop{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.6;
+}
+
+.modal{
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left:0;
+  right: 0;
+  margin: auto;
+  width: 60%;
+  height: 70%;
+  background-color: #fff;
+  border-radius: 20px;
+  display:flex;
+}
+
+.modal-main{
+  width: 70%;
+  height: 100%;
+  margin-left:30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-main.display-sign_in {
+  margin-left: 0;
+}
+
+.modal-main *{
+  transition: opacity ease 1s;
+  transition-delay: 0.3s;
+}
+
+.modal-main section.login-modal-main{
+  width: auto;
+  height: auto;
+  opacity: 1;
+  overflow: unset;
+}
+
+.modal-main.display-sign_in section.login-modal-main{
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.modal-main section.signup-modal-main{
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.modal-main.display-sign_in section.signup-modal-main{
+  width: auto;
+  height: auto;
+  opacity: 1;
+  overflow: unset;
+}
+
+.modal-main section h2 {
+  margin: 50px auto;
+}
+
+.modal-main section form input{
+  margin: 15px auto;
+  width: 70%;
+  height: 40px;
+  font-size: 17px;
+  padding: 4px 6px;
+  border: none;
+  border-bottom: 1px solid #a9a8a8;
+  border-radius: 0;
+  transition: all ease 0.3s;
+  outline: none;
+}
+
+.modal-main section form input:focus{
+  border: 1px solid #e8d8c3;
+  border-radius: 50px;
+}
+
+.modal-main section form button {
+  margin: 20px;
+  background: #e1ccb1;
+  border: none;
+  border-radius: 50px;
+  padding: 6px 12px;
+  width: 120px;
+  height: auto;
+  font-size: 20px;
+  color: #fff;
+  outline: none;
+}
+
+.modal-main section form button:focus{
+  background: #fff;
+  border: 1px solid #e1ccb1;
+  color: #e1ccb1;
+}
+
+.modal-side {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 70%;
+  background: linear-gradient(#e0ccb1,#D2B48C);
+  transition: all ease 1s;
+  border-radius: 20px 0 0 20px;
+}
+
+.modal-side *{
+  transition: opacity ease 1s;
+}
+
+.modal-side section.login-modal-side {
+  width: auto;
+  height: auto;
+  opacity: 1;
+  overflow: unset;
+  text-align: center;
+}
+
+.modal-side.display-sign_in section.login-modal-side {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.modal-side section.signup-modal-side {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.modal-side.display-sign_in section.signup-modal-side {
+  width: auto;
+  height: auto;
+  opacity: 1;
+  overflow: unset;
+}
+
+.modal-side.display-sign_in {
+  right: 0;
+  border-radius: 0 20px 20px 0;
+}
+
+.modal-side section h2 {
+  width: 90%;
+  margin: auto;
+}
+
+.modal-side section button {
+  margin: 20px;
+  background: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 6px 12px;
+  width: 120px;
+  height: auto;
+  font-size: 20px;
+  color: #bd8e52;
+  outline: none;
+}
+
+.display-sign_in .signup-modal-main{
+  opacity: 0;
+}
+
+.modal-close-button {
+  position: absolute;
+  right: 10px;
+  top: 3px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  transition: all ease 0.5s;;
+}
+
+.modal-close-button.display-sign_in {
+  color: #fff;
+}
