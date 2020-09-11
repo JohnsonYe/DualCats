@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import User from './../classes/user'
+import User from './../classes/user';
+import './../../css/login.css';
 
 const UserModal = ({handleClose, handleSignIn, show}) => {
     const showHideClassName = show ? "user-modal display-flex" : "user-modal display-none";
@@ -52,31 +53,59 @@ const UserModal = ({handleClose, handleSignIn, show}) => {
     function hadleRepeatPasswordChange(event) {
         setRepeatPassword(event.target.value);
     }
+
+    function showSignIn(event){
+        document.querySelector(".modal-main").classList.toggle('display-sign_in');
+        document.querySelector(".modal-side").classList.toggle('display-sign_in');
+        document.querySelector(".modal-close-button").classList.toggle('display-sign_in');
+    }
+
+    function showSignUp(event){
+        document.querySelector(".modal-main").classList.toggle('display-sign_in');
+        document.querySelector(".modal-side").classList.toggle('display-sign_in');
+        document.querySelector(".modal-close-button").classList.toggle('display-sign_in');
+    }
   
     return (
       <div className={showHideClassName}>
+        <div className="backdrop" onClick={handleClose}></div>
+        <div className="modal">
+            <div className="modal-main">
+                <section className="signup-modal-main">
+                    <h2>Create Free Account</h2>
+                    <form className="modal-form" align="center" onSubmit={handleRegister}>
+                        <input id="username" placeholder="Username" onChange={handleUsernameChange.bind(this)}></input>
+                        <input id="userRegisterEmail" placeholder="Email" onChange={handleEmailChange.bind(this)}></input>
+                        <input id="userRegisterPassword" placeholder="Password" onChange={handlePassowrdChange.bind(this)}></input>
+                        <input id="userRegisterRepeatPassword" placeholder="Repeat Password" onChange={hadleRepeatPasswordChange.bind(this)}></input>
+                        <button type="submit">Sign Up</button>
+                    </form>
+                </section>
 
-        <section className="signin-modal-main">
-            <h2>Create Free Account</h2>
-            <form className="modal-form" align="center" onSubmit={handleRegister}>
-                <input id="username" placeholder="Username" onChange={handleUsernameChange.bind(this)}></input>
-                <input id="userRegisterEmail" placeholder="Email" onChange={handleEmailChange.bind(this)}></input>
-                <input id="userRegisterPassword" placeholder="Password" onChange={handlePassowrdChange.bind(this)}></input>
-                <input id="userRegisterRepeatPassword" placeholder="Repeat Password" onChange={hadleRepeatPasswordChange.bind(this)}></input>
-                <button type="submit">Sign Up</button>
-            </form>
-        </section>
+                <section className="login-modal-main">
+                    <h2>Login to Your Account</h2>
+                    <form className="modal-form" align="center" onSubmit={handleLogin}>
+                        <input id="signinEmail" placeholder="Email" onChange={handleEmailChange.bind(this)}></input>
+                        <input id="signinPassword" placeholder="Password" onChange={handlePassowrdChange.bind(this)}></input>
+                        <button type="submit">Sign In</button>
+                    </form>
+                </section>
+            </div>
 
-        <section className="login-modal-main">
-            <h2>Login to Your Account</h2>
-            <form className="modal-form" align="center" onSubmit={handleLogin}>
-                <input id="signinEmail" placeholder="Email" onChange={handleEmailChange.bind(this)}></input>
-                <input id="signinPassword" placeholder="Password" onChange={handlePassowrdChange.bind(this)}></input>
-                <button type="submit">Sign In</button>
-            </form>
-        </section>
+            <div className="modal-side">
+                <section className="signup-modal-side">
+                    <h2>Already have an account?</h2>
+                    <button onClick={showSignIn}>Go Sign In</button>
+                </section>
 
-        <button className="modle-close-button" onClick={handleClose}>close</button>
+                <section className="login-modal-side">
+                    <h2>Don't have an account?</h2>
+                    <button onClick={showSignUp}>Sign Up</button>
+                </section>
+            </div>
+
+            <button className="modal-close-button" onClick={handleClose}>X</button>
+        </div>
       </div>
     );
 }
