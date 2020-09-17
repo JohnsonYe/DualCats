@@ -15,12 +15,6 @@ body {
     background-color: #E9E7E7;
 }
 
-.app-header {
-    width: 100%;
-    height: 80px;
-    position: absolute;
-}
-
 .wrapper {
     background-color: #1c1c1c;
     color: #afc0d4;
@@ -33,51 +27,57 @@ body {
     padding: 15px 30px 15px 30px
 }
 
-
 section {
     margin-bottom: 15px;
 }
 
-.navbar-list {
+/**
+    NavBar 
+**/
+.navbar {
+    padding: 0;
+    position: fixed;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    align-items: center;
+    min-height: 7vh;
+    width: 100%;
+    background:#FEFAEF;
+}
+
+
+.nav-logo {
+    margin-left: 5%;
     display: inline-block;
 }
 
-.navbar {
-    /* background-color: #1c1c1c; */
-    /* padding: 25px 30px 25px 30px; */
-    padding: 0;
-    position: absolute;
-    z-index: 999;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    min-height: 10vh;
-    width: 100%;
+.navbar-list {
+    display: inline-block;
+    font-size: larger;
 }
 
 .navbar > ul {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar .nav-link,
 .navbar .nav-logo {
-    /* color: #afc0d4; */
-    /* color: #1c1c1c; */
     color: #D2B48C;
     text-decoration: none;
-    width: 50%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
 }
 
 .sign-in-section {
+    text-align: right;
+}
+
+.sign-in-section a{
     cursor: pointer;
     color: #D2B48C;
-    position: relative;
+    margin: auto 5%;
+    padding: 8px 16px;
+    display: block;
 }
 
 /**
@@ -95,39 +95,6 @@ section {
 .display-flex {
     display: flex;
 }
-
-/**
-    user login and register modal
-    it will have animation to switch
-*/
-.user-modal {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-color: #E9E7E7;
-    z-index: 99999;
-}
-
-
-.user-modal input {
-    display: block;
-}
-
-
-/* .signin-modal-main {
-    flex: 50%;
-}
-
-.login-modal-main {
-    flex: 50%;
-} */
-
-.modle-close-button {
-    position: absolute;
-    right: 0;
-}
-
-
 
 /**
 * User menu 

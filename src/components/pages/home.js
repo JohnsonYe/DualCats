@@ -20,7 +20,6 @@ class Home extends Component {
 
     return (
         <div className="hompage-section">
-          <div className="gallery-button-section">
             <a className="cats-gallery-button" onClick={this.changeToCatsGallery}>
               <svg width="280" height="70">
                 <defs>
@@ -30,12 +29,9 @@ class Home extends Component {
                   </linearGradient>
                 </defs>
                 <rect x="5" y="5" rx="25" fill="none" stroke="url(#grad1)" width="265" height="52"></rect>
-                </svg>
-                <span>Cats Gallery</span>
-              </a>
-          </div>
-          
-          <div className="homepage-background-image"></div>
+              </svg>
+              <span>Cats Gallery</span>
+            </a>
         </div>
 
     );
