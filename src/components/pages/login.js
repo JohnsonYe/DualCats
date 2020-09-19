@@ -3,39 +3,54 @@ import User from './../classes/user';
 import './../../css/login.css';
 
 const UserModal = ({handleClose, handleSignIn, show}) => {
-    const showHideClassName = show ? "user-modal display-flex" : "user-modal display-none";
+    const showHideClassName = show ? "user-modal display-block" : "user-modal display-none";
     const [username, setUsername] = React.useState("");
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
     const [repeatPassword, setRepeatPassword] = React.useState("");
-
+    const [isError, setIsError] = React.useState(false);
+    const [errorMessaage, setErrorMessaage] = React.useState("");
+    
     function handleLogin(event) {
         event.preventDefault();
         let params = { email, password };
         let user = new User();
-        user.login(params).then((data) =>{
-            console.log(data.token);
-            /** TODO
-             *  Store token to cookies, user will need that to access for apis
-             */
-            handleSignIn(data.username);
-            handleClose();
+        user.login(params).then((response) =>{
+            if (!response.success) {
+                setIsError(true);
+                setErrorMessaage(response.message);
+            } else {
+                console.log(response.data.token);
+                /** TODO
+                 *  Store token to cookies, user will need that to access for apis
+                 */
+                handleSignIn(response.data.username);
+                handleClose();
+            }
         });
     }
+
+    
 
     function handleRegister(event) {
         event.preventDefault();
         let params = { username, email, password, repeat_password: repeatPassword };
         let user = new User();
-        user.register(params).then((data) => {
-            if (!data) {
-                console.log("Fail to register")
+        user.register(params).then((response) => {
+            if (!response.success) {
+                setIsError(true);
+                setErrorMessaage(response.message);
             } else {
-                handleSignIn(data.username);
+                handleSignIn(response.data.username);
                 handleClose();
-
             }
         });
+    }
+
+    function showErrorMessage() {
+        if (isError) {
+            return (<div className="error-message"> {errorMessaage} </div>)
+        }
     }
 
     function handleUsernameChange (event) {
@@ -54,13 +69,17 @@ const UserModal = ({handleClose, handleSignIn, show}) => {
         setRepeatPassword(event.target.value);
     }
 
-    function showSignIn(event){
+    function showSignIn(){
+        setIsError(false);
+        setErrorMessaage("");
         document.querySelector(".modal-main").classList.toggle('display-sign_in');
         document.querySelector(".modal-side").classList.toggle('display-sign_in');
         document.querySelector(".modal-close-button").classList.toggle('display-sign_in');
     }
 
-    function showSignUp(event){
+    function showSignUp(){
+        setIsError(false);
+        setErrorMessaage("");
         document.querySelector(".modal-main").classList.toggle('display-sign_in');
         document.querySelector(".modal-side").classList.toggle('display-sign_in');
         document.querySelector(".modal-close-button").classList.toggle('display-sign_in');
@@ -74,10 +93,11 @@ const UserModal = ({handleClose, handleSignIn, show}) => {
                 <section className="signup-modal-main">
                     <h2>Create Free Account</h2>
                     <form className="modal-form" align="center" onSubmit={handleRegister}>
-                        <input id="username" placeholder="Username" onChange={handleUsernameChange.bind(this)}></input>
-                        <input id="userRegisterEmail" placeholder="Email" onChange={handleEmailChange.bind(this)}></input>
-                        <input id="userRegisterPassword" placeholder="Password" onChange={handlePassowrdChange.bind(this)}></input>
-                        <input id="userRegisterRepeatPassword" placeholder="Repeat Password" onChange={hadleRepeatPasswordChange.bind(this)}></input>
+                        <input id="username" placeholder="Username" onChange={handleUsernameChange.bind(this)} ></input>
+                        <input id="userRegisterEmail" placeholder="Email" onChange={handleEmailChange.bind(this)} ></input>
+                        <input id="userRegisterPassword" placeholder="Password" onChange={handlePassowrdChange.bind(this)} ></input>
+                        <input id="userRegisterRepeatPassword" placeholder="Repeat Password" onChange={hadleRepeatPasswordChange.bind(this)} ></input>
+                        {showErrorMessage()}
                         <button type="submit">Sign Up</button>
                     </form>
                 </section>
@@ -85,8 +105,9 @@ const UserModal = ({handleClose, handleSignIn, show}) => {
                 <section className="login-modal-main">
                     <h2>Login to Your Account</h2>
                     <form className="modal-form" align="center" onSubmit={handleLogin}>
-                        <input id="signinEmail" placeholder="Email" onChange={handleEmailChange.bind(this)}></input>
-                        <input id="signinPassword" placeholder="Password" onChange={handlePassowrdChange.bind(this)}></input>
+                        <input id="signinEmail" placeholder="Email" onChange={handleEmailChange.bind(this)} required></input>
+                        <input id="signinPassword" placeholder="Password" onChange={handlePassowrdChange.bind(this)} required></input>
+                        {showErrorMessage()}
                         <button type="submit">Sign In</button>
                     </form>
                 </section>

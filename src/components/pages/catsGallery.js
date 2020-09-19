@@ -133,12 +133,12 @@ class CatsGallery extends Component {
                 {catImage}
             </div>
             
-            <div>
+            {/* <div>
                 <form onSubmit={this.onFormSubmitHandler}>
                     <input type="file" name="file" onChange= {this.onChangeSelectedFile} />
                     <button type="submit">Upload</button>
                 </form>
-            </div>
+            </div> */}
         </div>
     );
   }

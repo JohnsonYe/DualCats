@@ -27,6 +27,7 @@ class Request {
             method: "GET",
             headers: this.headers
         }).then(res => res.json())
+            .catch(err => err);
           
     }
 
