@@ -7,7 +7,6 @@ import utils from './utils';
 class Validator {
     validateLoginInformation (params) {
         const userValidator = new UserInformationValidator(params);
-        console.log(userValidator);
         if (!userValidator.checkEmail()) {
             throw new Error("Invalid email.");
         }

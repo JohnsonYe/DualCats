@@ -1,9 +1,12 @@
+/** Dependencies */
 import React, {Component} from 'react';
+import cookie from "./components/classes/cookie.js";
+import { NullUser, ClientUser } from "./components/classes/user.js";
+import Oauth from "./components/classes/oauth";
 import './css/default.css';
-// import './sass/app.sass';
 
 // Rounter
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
 
 // link
 import Home from './components/pages/home';
@@ -18,10 +21,9 @@ class App extends Component {
     super(props);
     this.state = {
       isSignIn: false,
-      user: "",
       showModal: false,
-      redirect: false
-      // userMenuOpen: false,
+      redirect: false,
+      currentUser: new NullUser()
     };
 
     this.showLoginModal = this.showLoginModal.bind(this);
@@ -29,17 +31,28 @@ class App extends Component {
 
     this.handleSignIn   = this.handleSignIn.bind(this);
     this.handleLogout   = this.handleLogout.bind(this);
-
   }
 
-  handleSignIn (username) {
-    this.setState({
-      isSignIn: !this.state.isSignIn,
-      user: username
+  /**
+   * 
+   * @param {Object} {username: string, email: string, access_token: string}
+   * @description create a client user, the state changes to signed in User
+   */
+  handleSignIn ({ username, email, access_token}) {
+    this.setState({currentUser: new ClientUser({
+        username: username,
+        email: email,
+        access_token: access_token
+      }),
+      isSignIn: true
     });
   }
 
+  /**
+   * @description clear refresh token from cookies, current user state change to null
+   */
   handleLogout () {
+    document.cookie = "refresh_token"+'=; Max-Age=-99999999;';
     this.setState({
       isSignIn: !this.state.isSignIn,
       user: "",
@@ -56,18 +69,36 @@ class App extends Component {
     this.setState({showModal: false});
   }
 
+  /**
+   * check user cookies and user access
+   * request a new token everytime for newpage
+   */
+  componentDidMount() {
+    if (cookie.get("refresh_token") && !this.state.currentUser.hasAccess()) {
+      const oauth = new Oauth();
+      oauth.refreshToken(cookie.get("refresh_token")).then((response)=>{
+        cookie.set("refresh_token", response.refresh_token, process.env.REFRESH_TOKEN_EXPIRE_TIME);
+        this.handleSignIn({ username: response.username, email: response.email, access_token: response.token });
+      });
+    }
+
+    /** @TODO
+     * Logout user once the cookie expire
+     */
+  }
+
+
   render() {
-    let signInSection;
     /**
      * This section handle sign in state
      * after oauth finished in backend
      * i will change the part have capable to sign in
      */
     if (this.state.isSignIn) { 
-      signInSection = (
+      var signInSection = (
           <>
             <a>
-              <i className="fa fa-user" aria-hidden="true">Welcome {this.state.user}</i>
+              <i className="fa fa-user" aria-hidden="true">Welcome {this.state.currentUser.username}</i>
             </a>
             
             <ul className="user-dropdown-menu">
@@ -78,7 +109,7 @@ class App extends Component {
           </>
       );
     } else {
-      signInSection = (<a onClick={this.showLoginModal}><i className="fa fa-sign-in" aria-hidden="true">Sign in</i></a>);
+      var signInSection = (<a onClick={this.showLoginModal}><i className="fa fa-sign-in" aria-hidden="true">Sign in</i></a>);
     }
 
     return (
@@ -98,31 +129,18 @@ class App extends Component {
                 {signInSection}
               </div>
             </nav>
-            <UserModal show={this.state.showModal} handleClose={this.hideLoginModal} handleSignIn={this.handleSignIn}/>
+            <UserModal show={this.state.showModal} handleClose={this.hideLoginModal} handleSignIn={this.handleSignIn} handleSignIn={this.handleSignIn}/>
           
           <Switch>
             <Route exact path='/' component={Home}/>
             <Route path='/aboutme' component={AboutMe} />
             <Route path='/contact' component={Contact} />
-            <Route path='/catsGallery' component={CatsGallery} />
+            <Route path='/catsGallery' component={CatsGallery}/>
           </Switch>
         </div>
       </Router>
     )
   }
 }
-
-// const Modal = ({handleClose, show, children}) => {
-//   const showHideClassName = show ? "modal display-block" : "modal display-none";
-
-//   return (
-//     <div className={showHideClassName}>
-//       <section className="modal-main">
-//         {children}
-//         <button onClick={handleClose}>close</button>
-//       </section>
-//     </div>
-//   );
-// }
 
 export default App;

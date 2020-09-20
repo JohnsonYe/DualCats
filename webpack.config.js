@@ -48,7 +48,8 @@ module.exports = () => {
             new DefinePlugin({
                 "process.env": {
                     NODE_ENV: JSON.stringify(BUILD_ENVIROMENT),
-                    API_URI: JSON.stringify(API_URI)
+                    API_URI: JSON.stringify(API_URI),
+                    REFRESH_TOKEN_EXPIRE_TIME: 86400
                 }
             })
         ],

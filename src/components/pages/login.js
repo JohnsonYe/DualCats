@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import User from './../classes/user';
+import Oauth from './../classes/oauth';
+import cookie from "./../classes/cookie.js";
 import './../../css/login.css';
 
 const UserModal = ({handleClose, handleSignIn, show}) => {
@@ -14,34 +15,39 @@ const UserModal = ({handleClose, handleSignIn, show}) => {
     function handleLogin(event) {
         event.preventDefault();
         let params = { email, password };
-        let user = new User();
-        user.login(params).then((response) =>{
+        let oauth = new Oauth();
+        oauth.login(params).then((response) =>{
             if (!response.success) {
                 setIsError(true);
                 setErrorMessaage(response.message);
             } else {
-                console.log(response.data.token);
-                /** TODO
-                 *  Store token to cookies, user will need that to access for apis
-                 */
-                handleSignIn(response.data.username);
+                cookie.set("refresh_token", response.data.refresh_token, process.env.REFRESH_TOKEN_EXPIRE_TIME);
+                handleSignIn({
+                    username: response.data.username,
+                    email: email,
+                    access_token: response.data.token
+                });
                 handleClose();
             }
         });
     }
 
-    
 
     function handleRegister(event) {
         event.preventDefault();
         let params = { username, email, password, repeat_password: repeatPassword };
-        let user = new User();
-        user.register(params).then((response) => {
+        let oauth = new Oauth();
+        oauth.register(params).then((response) => {
             if (!response.success) {
                 setIsError(true);
                 setErrorMessaage(response.message);
             } else {
-                handleSignIn(response.data.username);
+                cookie.set("refresh_token", response.data.refresh_token, process.env.REFRESH_TOKEN_EXPIRE_TIME);
+                handleSignIn({
+                    username: username,
+                    email: email,
+                    access_token: response.data.token
+                });
                 handleClose();
             }
         });
@@ -129,35 +135,6 @@ const UserModal = ({handleClose, handleSignIn, show}) => {
         </div>
       </div>
     );
-}
-
-/**
- * @IDEA
- *  the login page idea is comes from the webside 
- *          https://diprella.com/sign-in
- *  It will be use for a personal project
- */
-
-const loginModal = () => {
-    /**
-     * TODO
-     *  1. Create a smooth transition to to login modal
-     *  2. Login modal will be on the right side, left side will be the asking 
-     *     the user first time user and ask to create account
-     *  3. Once user click the signUp button on the left side, there will be an animation transition to the right
-     *      then will be reigister page
-     */
-}
-
-const registerModal = () => {
-    /**
-     * TODO
-     *  1. Create a smooth transition to to register modal
-     *  2. register modal will be on the left side, right side will be the asking 
-     *     the user if existing user, there will be a button for sign in
-     *  3. Once user click the sign in button on the right side, there will be an animation transition to the left
-     *      then will be login page
-     */
 }
 
 export default UserModal;
