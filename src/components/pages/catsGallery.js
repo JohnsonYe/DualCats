@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import S3Bucket from './../classes/s3bucket';
 import './../../css/catsGallery.css';
 import profilePic from './../../images/milky.png';
+import Uploader from './uploadImage';
+import CatImage from './catImage';
 
 class CatsGallery extends Component {
   constructor (props) {
@@ -10,6 +12,8 @@ class CatsGallery extends Component {
     this.onDeleteImageListener = this.onDeleteImageListener.bind(this);
     this.onFormSubmitHandler = this.onFormSubmitHandler.bind(this);
     this.onChangeSelectedFile = this.onChangeSelectedFile.bind(this);
+    this.horizontalScroll = this.horizontalScroll.bind(this);
+    this.scrollRef = React.createRef();
     this.catBreedsCategory = [
         "Abyssinian",
         "Aegean",
@@ -28,7 +32,8 @@ class CatsGallery extends Component {
         imageData: [],
         selectedFile: null,
         isDelete: false,
-        uploadedImage: ""
+        uploadedImage: "",
+        uploadBtn: false
     };
   }
 
@@ -47,7 +52,13 @@ class CatsGallery extends Component {
             this.setState({isProcessImageSuccess: true, imageData: imageList});
         }).catch((err) => {
             this.setState({isProcessImageSuccess: false});
-        })
+        });
+
+        this.scrollRef.current.addEventListener('mousewheel',this.horizontalScroll,{passive:false});
+  }
+
+  componentWillUnmount() {
+    this.scrollRef.current.removeEventListener('mousewheel',this.horizontalScroll);
   }
 
   onDeleteImageListener = (key) => {
@@ -90,27 +101,41 @@ class CatsGallery extends Component {
           this.setState({uploadedImage: e.target.result});
         };
         reader.readAsDataURL(event.target.files[0]);
-      }
+        this.setState({uploadBtn: true});
+    } else {
+        this.setState({uploadBtn: false});
+    }
+    
+  }
+
+  horizontalScroll(e){
+    e = e || window.event;
+    e.preventDefault();
+    var tab = this.scrollRef.current;
+    var leftPosition = this.scrollRef.current.scrollLeft;
+    tab.scrollTo({
+        left: leftPosition + e.deltaY*20,
+        behavior: "smooth"
+    });
   }
 
   render() {
     let catBreadList = this.catBreedsCategory.map((name, index) => (
-        <div className="catBreeds" key={index}>
-            <a>
-                <img src={profilePic}></img>
-                <span>{name}</span>
-            </a>
-        </div>
+        <a key={index} className="catBreed">
+            <img src={profilePic}></img>
+            <span>{name}</span>
+        </a>
     ));
     
     let catImage = (!this.state.isProcessImageSuccess)
                     ? (<div>404 Not Found</div>) /** finish the no image page */
                     : this.state.imageData.map((image, index) => (
-                        <div className="thumbnail-image" key={index} item-key={image.key}>
-                            <img src={(image.sources) ? image.sources : `data:image/png;base64, ${image.rawData}`}></img>
-                            <p>{image.name}</p>
-                            <button onClick={ () => this.onDeleteImageListener(image.key) }>Delete</button>
-                        </div>
+                        // <div className="thumbnail-image" key={index} item-key={image.key}>
+                        //     <img src={(image.sources) ? image.sources : `data:image/png;base64, ${image.rawData}`}></img>
+                        //     <p>{image.name}</p>
+                        //     <button onClick={ () => this.onDeleteImageListener(image.key) }>Delete</button>
+                        // </div>
+                        <CatImage key={index} image={image} onDelete={this.onDeleteImageListener} />
                     ));
 
     return (
@@ -123,7 +148,7 @@ class CatsGallery extends Component {
             </div> */}
 
             {/* Cat bread tap list section */}
-            <div className="tablist">
+            <div className="tablist" ref={this.scrollRef}>
                 {catBreadList}
             </div>
 
@@ -133,12 +158,12 @@ class CatsGallery extends Component {
                 {catImage}
             </div>
             
-            {/* <div>
-                <form onSubmit={this.onFormSubmitHandler}>
-                    <input type="file" name="file" onChange= {this.onChangeSelectedFile} />
-                    <button type="submit">Upload</button>
-                </form>
-            </div> */}
+            {/* <form className="upload-form" onSubmit={this.onFormSubmitHandler}>
+                <input type="file" id="file" name="file" className="upload-input" accept="image/*" onChange= {this.onChangeSelectedFile} />
+                <label htmlFor="file" className="upload-label">{labelName}</label>
+                <button type="submit">Upload</button>
+            </form> */}
+            <Uploader showBtn={this.state.uploadBtn} file={this.state.selectedFile} handleUpload={this.onChangeSelectedFile} handleSubmit={this.onFormSubmitHandler} />
         </div>
     );
   }
