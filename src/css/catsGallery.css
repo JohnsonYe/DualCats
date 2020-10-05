@@ -1,10 +1,6 @@
 #gallery-section {
-    display: grid;
-    position: relative;
     text-align: center;
-    grid-gap: 20px;
-    grid-template-columns: repeat(1, minmax(350px, 1fr));
-    top: 50px;
+    padding-top: 75px;
 }
 
 .search-bar > input {
@@ -32,12 +28,11 @@
 
 
 .tablist {
-    display: flex;
-    flex-shrink: 0;
-    align-items: stretch;
-    overflow: scroll;
+    padding: 10px;
+    margin: 10px 50px;
     white-space: nowrap;
-    padding: 10px 40px;
+    overflow: auto;
+    width: calc(100% - 50px);
 }
 
 .tablist::-webkit-scrollbar {
@@ -50,24 +45,16 @@
     scrollbar-width: none;  /* Firefox */
 }
 
-.tablist > div {
-    /* border: 1px solid black;
-    flex: 1 0 21%; */
-    display: inline-block;
-}
 
-.tablist > div > a {
+.tablist .catBreed {
     border-radius: 50px;
-    vertical-align: middle;
-    padding: 0 20px;
-    padding-left: 0;
+    padding-right: 15px;
     background-color: #eedfdf;
     border: 1px solid #dfe1e5;
     color: #3c4043;
     display: inline-block;
     margin-left: 8px;
     -webkit-tap-highlight-color: rgba(255,255,255,0.161);
-    position: relative;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -75,10 +62,9 @@
 
 }
 
-.tablist > div > a > img {
+.tablist .catBreed > img {
     float: left;
     border-radius: 24px;
-    /* display: inline; */
     height: 50px;
     width: 50px;
     margin: 2px 8px 2px 2px;
@@ -89,7 +75,7 @@
     border-radius: 25px;
 }
 
-.tablist > div > a > span {
+.tablist .catBreed > span {
     line-height: 50px;
 }
 
@@ -97,9 +83,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 30px;
-    grid-row-gap: 100px;
     padding: 0 50px;
-
 }
 
 .image-section > .thumbnail-image {

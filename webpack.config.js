@@ -5,7 +5,7 @@ var API_URI = "https://api.dualcats.com";
 var BUILD_ENVIROMENT = "production";
 for (var i = 0; i < process.argv.length; i++) {
     if (process.argv[i] == "development") {
-        API_URI = "http://localhost:8084";
+        //API_URI = "http://localhost:8084";
         BUILD_ENVIROMENT = 'developement';
     }
 }
