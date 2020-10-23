@@ -126,44 +126,22 @@ class CatsGallery extends Component {
             <span>{name}</span>
         </a>
     ));
-    
-    let catImage = (!this.state.isProcessImageSuccess)
-                    ? (<div>404 Not Found</div>) /** finish the no image page */
-                    : this.state.imageData.map((image, index) => (
-                        // <div className="thumbnail-image" key={index} item-key={image.key}>
-                        //     <img src={(image.sources) ? image.sources : `data:image/png;base64, ${image.rawData}`}></img>
-                        //     <p>{image.name}</p>
-                        //     <button onClick={ () => this.onDeleteImageListener(image.key) }>Delete</button>
-                        // </div>
-                        <CatImage key={index} image={image} onDelete={this.onDeleteImageListener} />
-                    ));
+
+    const data = {
+        sources: '/src/images/milky.png',
+        name: 'Milky'
+    };
+
+    let catImage = [0,1,2,3,4].map((ele,i)=>{
+        return <CatImage key={i} image={data} />
+    });
 
     return (
-        <div id="gallery-section">
-            {/* {this.processRawImageData()} */}
-            {/* <div className="search-section">
-                <div className="search-bar">
-                    <input name="catsSearch" title="Search" type="text" placeholder="Search for cat breeds..."></input>
-                </div>
-            </div> */}
-
-            {/* Cat bread tap list section */}
-            <div className="tablist" ref={this.scrollRef}>
-                {catBreadList}
-            </div>
-
-            {/* Cat Image Section */}
-            
-            <div className="image-section">
+        <div id="gallery-section" className="mainContent-padding">
+            <input type='text' id='gallery-search' placeholder='Search'/>
+            <main className="image-section">
                 {catImage}
-            </div>
-            
-            {/* <form className="upload-form" onSubmit={this.onFormSubmitHandler}>
-                <input type="file" id="file" name="file" className="upload-input" accept="image/*" onChange= {this.onChangeSelectedFile} />
-                <label htmlFor="file" className="upload-label">{labelName}</label>
-                <button type="submit">Upload</button>
-            </form> */}
-            <Uploader showBtn={this.state.uploadBtn} file={this.state.selectedFile} handleUpload={this.onChangeSelectedFile} handleSubmit={this.onFormSubmitHandler} />
+            </main>
         </div>
     );
   }

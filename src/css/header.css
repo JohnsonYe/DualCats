@@ -1,52 +1,58 @@
-.header-wrapper {
-    height: 300px;
-    background: #1c1c1c;
-    width: 100%;
+header {
+  padding: 0;
+  position: fixed;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  align-items: center;
+  width: 100%;
+  height: 75px;
+  z-index: 99;
+  box-shadow: 0 2px 5px #a9a8a8;
 }
 
-.header-wrapper .profile-pic {
-    border-radius: 50%;
-    margin: 50px;
-    width: 200px;
-    height: 200px;
-    float: left;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+header .logo {
+  margin-left: 5%;
 }
 
-.header-wrapper .profile-content {
-    float: left;
-    margin-top: 50px;
-    color: #afc0d4;
+header nav .nav-link {
+  display:inline-flex;
+  width: 33%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  position: relative;
 }
 
-.header-wrapper .contact {
-    float: right;
-    color: #afc0d4;
-    margin-right: 50px;
-    margin-top: 50px;
+header nav .nav-link.active:nth-child(1)~hr{
+  margin-left: 0;
 }
 
-.socialMedia-list {
-    padding-left: 0;
+header nav .nav-link.active:nth-child(2)~hr {
+  margin-left: 33%;
 }
 
-.socialMedia-list li {
-    list-style: none;
-    display: inline-block;
-    margin-right: 10px;
+header nav .nav-link.active:nth-child(3)~hr {
+  margin-left: 66%;
 }
 
-.socialMedia-list .fa {
-    color: #1c1c1c;
-    font-size: 20px;
-    padding-top: 8px;
+header nav .nav-link:nth-child(1):hover~hr {
+  margin-left: 0;
 }
 
-.socialMedia-list a {
-    background-color: #afc0d4;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: inline-block;
-    text-align: center;
+header nav .nav-link:nth-child(2):hover~hr {
+  margin-left: 33%;
+}
+
+header nav .nav-link:nth-child(3):hover~hr {
+  margin-left: 66%;
+}
+
+header hr {
+  margin: 0;
+  background: #D2B48C;
+  height: 0.25rem;
+  border: none;
+  width: 33%;
+  transition: margin 0.3s ease;
 }

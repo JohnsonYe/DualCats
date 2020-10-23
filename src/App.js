@@ -4,6 +4,8 @@ import cookie from "./components/classes/cookie.js";
 import { NullUser, ClientUser } from "./components/classes/user.js";
 import Oauth from "./components/classes/oauth";
 import './css/default.css';
+import Header from './components/component/header.js';
+import FriendList from './components/component/friendList.js';
 
 // Rounter
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
@@ -23,14 +25,19 @@ class App extends Component {
       isSignIn: false,
       showModal: false,
       redirect: false,
-      currentUser: new NullUser()
+      currentUser: new NullUser(),
+      showFriendList: false
     };
 
     this.showLoginModal = this.showLoginModal.bind(this);
     this.hideLoginModal = this.hideLoginModal.bind(this);
-
     this.handleSignIn   = this.handleSignIn.bind(this);
     this.handleLogout   = this.handleLogout.bind(this);
+    this.toggleFriendList = this.toggleFriendList.bind(this);
+  }
+
+  toggleFriendList(){
+    this.setState(this.setState({showFriendList:!this.state.showFriendList}));
   }
 
   /**
@@ -115,20 +122,8 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          {/* <div className="app-header"> */}
-            <nav className='navbar'>
-              <div><Link to={'/'} className="nav-link nav-logo"><h1>Dualcats</h1></Link></div>
-              <ul>
-                <li className='navbar-list home'><Link to={'/'} className="nav-link">Home</Link></li>
-                {/* <li className='navbar-list contact'><Link to={'/contact'} className="nav-link">Contact</Link></li> */}
-                {/* <li className='navbar-list aboutme'><Link to={'/aboutme'} className="nav-link">About Me</Link></li> */}
-                <li className='navbar-list catsGallery'><Link to={'/catsGallery'} className="nav-link">Gallery</Link></li>
-                {/* <li className='navbar-list myPets'><Link to={'/catsGallery'} className="nav-link">My Pets</Link></li> */}
-              </ul>
-              <div className="sign-in-section" >
-                {signInSection}
-              </div>
-            </nav>
+            <Header isSignIn={this.state.isSignIn} showSignIn={this.showLoginModal} toggleFriendList={this.toggleFriendList}/>
+            <FriendList isSignIn={this.state.isSignIn} showFriendList={this.state.showFriendList}/>
             <UserModal show={this.state.showModal} handleClose={this.hideLoginModal} handleSignIn={this.handleSignIn} handleSignIn={this.handleSignIn}/>
           
           <Switch>
