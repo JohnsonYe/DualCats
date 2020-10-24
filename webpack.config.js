@@ -1,13 +1,16 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { DefinePlugin } = require('webpack');
-var API_URI = "https://api.dualcats.com";
-var BUILD_ENVIROMENT = "production";
-for (var i = 0; i < process.argv.length; i++) {
-    if (process.argv[i] == "development") {
-        //API_URI = "http://localhost:8084";
-        BUILD_ENVIROMENT = 'developement';
-    }
+
+if (process.argv[6] == '--prod') {
+    var API_URI = "https://api.dualcats.com";
+    var BUILD_ENVIROMENT = 'development';
+} else if (process.argv[6] == '--dev') {
+    var API_URI = "http://localhost:8084";
+    var BUILD_ENVIROMENT = 'development';
+} else {
+    var API_URI = "https://api.dualcats.com";
+    var BUILD_ENVIROMENT = 'production';
 }
 
 

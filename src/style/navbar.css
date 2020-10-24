@@ -1,0 +1,33 @@
+.navbar-list {
+    display: inline-block;
+}
+
+.navbar {
+    /* background-color: #1c1c1c; */
+    /* padding: 25px 30px 25px 30px; */
+    /* padding: 0; */
+    position: fixed;
+    top: 0;
+    /* z-index: 1; */
+    justify-content: space-around;
+    align-items: center;
+    min-height: 10vh;
+    width: 100%;
+}
+
+.navbar > ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navbar .nav-link,
+.navbar .nav-logo {
+    color: #D2B48C;
+    text-decoration: none;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}

@@ -4,8 +4,7 @@ import PlusDropdown from './dropdownPlus.js';
 import FriendsDropdown from './dropdownFriends.js';
 import SettingsDropdown from './dropdownSettings.js';
 
-const UserInfo = ({isSignIn,showSignIn, toggleFriendList}) => {
-  const[login, setLogin] = useState(false);
+const UserInfo = ({currentUser, showSignIn, toggleFriendList}) => {
   const[dropdownShow,setShow] = useState(false);
   const[dropdownActive, setActive] = useState(0);
   const dropdownRef1 = useRef(null);
@@ -39,11 +38,12 @@ const UserInfo = ({isSignIn,showSignIn, toggleFriendList}) => {
       ()=>document.removeEventListener("click",handleClickOutside)
     );
   });
-
-  if(!login){
+  
+  if(!currentUser.isSignIn){
     return(
       <div className="sign-in-section">
-        <a className="btn-sign-in fontColor-main cursor-pointer" onClick={()=>{setLogin(true)}}><i className="fa fa-sign-in"></i>Sign In</a>
+        {/* <a className="btn-sign-in fontColor-main cursor-pointer" onClick={()=>{setLogin(true)}}><i className="fa fa-sign-in"></i>Sign In</a> */}
+        <a className="btn-sign-in fontColor-main cursor-pointer" onClick={()=>{showSignIn()}}><i className="fa fa-sign-in"></i>Sign In</a>
       </div>
     );
   } else {
@@ -51,7 +51,7 @@ const UserInfo = ({isSignIn,showSignIn, toggleFriendList}) => {
       <div className="sign-in-section">
         <div className="profile btn-hoverBgColor cursor-pointer">
           <img className="profile-img" src="https://img.pngio.com/user-profile-default-image-png-clipart-1578186-pinclipart-user-profile-png-880_769.png"></img>
-          <span className="profile-name fontColor-main">Name</span>
+          <span className="profile-name fontColor-main">{currentUser.username}</span>
         </div>
         <div ref={dropdownRef1}>
           <button onClick={()=>showDropdown(1)} className="btn-hoverBgColor btn-focusBgColor fontColor-main"><i className="fa fa-plus"></i></button>

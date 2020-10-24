@@ -3,7 +3,7 @@ import S3Bucket from './../classes/s3bucket';
 import './../../css/catsGallery.css';
 import profilePic from './../../images/milky.png';
 import Uploader from './uploadImage';
-import CatImage from './catImage';
+import CatImage from '../component/catImage';
 
 class CatsGallery extends Component {
   constructor (props) {
@@ -40,7 +40,6 @@ class CatsGallery extends Component {
   componentDidMount() {
       this.bucket.getRawImage()
         .then((rawData) => {
-            console.log(rawData);
             let imageList = [];
             for (var item of rawData) {
                 imageList.push({
@@ -78,7 +77,6 @@ class CatsGallery extends Component {
     const formData = new FormData();
     formData.append('file', this.state.selectedFile);
     this.bucket.uploadFile(formData).then((data)=>{
-        console.log("got key", data);
         let update = this.state.imageData;
         let newImage = {
             name: (data.key).split(".")[0],

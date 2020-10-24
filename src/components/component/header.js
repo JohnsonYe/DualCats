@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import UserInfo from "./userInfo";
 import '../../css/header.css';
 
-const Header = ({isSignIn,showSignIn,toggleFriendList}) => {
+const Header = ({currentUser, showSignIn,toggleFriendList}) => {
   return (
     <header className="bgColor-main">
       <div><Link to={'/'} className="logo display-inline-block nav-link fontColor-main"><h1>Dualcats</h1></Link></div>
@@ -13,7 +13,7 @@ const Header = ({isSignIn,showSignIn,toggleFriendList}) => {
         <NavLink exact to={'/catsGallery'} className="nav-link fontColor-main" activeClassName="active"><i className="fa fa-image"></i></NavLink>
         <hr />
       </nav>
-      <UserInfo isSignIn={isSignIn} showSignIn={showSignIn} toggleFriendList={toggleFriendList}/>
+      <UserInfo currentUser={currentUser} showSignIn={showSignIn} toggleFriendList={toggleFriendList}/>
     </header>
   )
 }

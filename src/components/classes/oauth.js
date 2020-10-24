@@ -45,7 +45,7 @@ class Oauth {
                     // create session to let user login for a amount of time
                     return {success: true, data: response.data.data};
                 } else {
-                    return { success: false, message: data.message };
+                    return { success: false, message: response.message };
                 }
             }).catch(err => {
                 console.log("TODO", err);

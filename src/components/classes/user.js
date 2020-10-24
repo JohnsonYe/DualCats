@@ -4,6 +4,7 @@ import Validator from './validator.js';
 class NullUser {
     constructor () {
         this.username = "";
+        this.isSignIn = false;
     }
     
     hasAccess() {
@@ -15,6 +16,7 @@ class ClientUser {
     constructor ({username, email}) {
         this.username = username;
         this.email = email;
+        this.isSignIn = true;
     }
 
     hasAccess() {

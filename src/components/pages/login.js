@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import Oauth from './../classes/oauth';
 import cookie from "./../classes/cookie.js";
 import './../../css/login.css';
+import GlobalStore from '../../GlobalStore';
 
-const UserModal = ({handleClose, handleSignIn, show}) => {
+const UserModal = ({handleClose, show}) => {
     const showHideClassName = show ? "user-modal display-block" : "user-modal display-none";
     const [username, setUsername] = React.useState("");
     const [email, setEmail] = React.useState("");
@@ -11,6 +12,7 @@ const UserModal = ({handleClose, handleSignIn, show}) => {
     const [repeatPassword, setRepeatPassword] = React.useState("");
     const [isError, setIsError] = React.useState(false);
     const [errorMessaage, setErrorMessaage] = React.useState("");
+    const { setCurrentUser } = GlobalStore();
     
     function handleLogin(event) {
         event.preventDefault();
@@ -22,11 +24,7 @@ const UserModal = ({handleClose, handleSignIn, show}) => {
                 setErrorMessaage(response.message);
             } else {
                 cookie.set("refresh_token", response.data.refresh_token, process.env.REFRESH_TOKEN_EXPIRE_TIME);
-                handleSignIn({
-                    username: response.data.username,
-                    email: email,
-                    access_token: response.data.token
-                });
+                setCurrentUser(response.data.username, email, response.data.token);
                 handleClose();
             }
         });
@@ -43,11 +41,7 @@ const UserModal = ({handleClose, handleSignIn, show}) => {
                 setErrorMessaage(response.message);
             } else {
                 cookie.set("refresh_token", response.data.refresh_token, process.env.REFRESH_TOKEN_EXPIRE_TIME);
-                handleSignIn({
-                    username: username,
-                    email: email,
-                    access_token: response.data.token
-                });
+                setCurrentUser(username, email, response.data.token);
                 handleClose();
             }
         });
