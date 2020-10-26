@@ -1,100 +1,23 @@
-#gallery-section {
-    text-align: center;
-    padding-top: 75px;
-}
-
-.search-bar > input {
-    width: 20vw;
-    min-width: 200px;
-    /* background-color: transparent; */
-    opacity: 30%;
-    /* border: none; */
-    /* border-top: none;
-    border-left: none;
-    border-right: none; */
-    border-radius: 50px;
-    border-color: #D2B48C;
-    color: #D2B48C;
+#gallery-search {
+    display: block;
+    width: 50%;
+    border: none;
+    border-radius: 15px;
     outline: none;
-}
-
-.search-bar > input::placeholder,
-.search-bar > input:-ms-input-placeholder,
-.search-bar > input::-ms-input-placeholder {
-    color: #D2B48C;
-    opacity: 1;
-}
-
-
-
-.tablist {
-    padding: 10px;
-    margin: 10px 50px;
-    white-space: nowrap;
-    overflow: auto;
-    width: calc(100% - 50px);
-}
-
-.tablist::-webkit-scrollbar {
-    display: none;
-}
+    margin: 20px 0;
+    padding: 4px 12px 4px 36px;
+    font-size: 20px;
+    background-color: #fff;
+    background-size: 24px;
+    background-image: url('../images/search-icon.png');
+    background-position: 5px 7px;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 3px 1px #a9a8a8;
+    transition: all 0.3s ease;
+  }
   
-/* Hide scrollbar for IE, Edge and Firefox */
-.tablist {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-}
-
-
-.tablist .catBreed {
-    border-radius: 50px;
-    padding-right: 15px;
-    background-color: #eedfdf;
-    border: 1px solid #dfe1e5;
-    color: #3c4043;
-    display: inline-block;
-    margin-left: 8px;
-    -webkit-tap-highlight-color: rgba(255,255,255,0.161);
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    width: 185px;
-
-}
-
-.tablist .catBreed > img {
-    float: left;
-    border-radius: 24px;
-    height: 50px;
-    width: 50px;
-    margin: 2px 8px 2px 2px;
-    object-fit: cover;
-    overflow: hidden;
-    vertical-align: middle;
-    margin: 3px 12px 3px 3px;
-    border-radius: 25px;
-}
-
-.tablist .catBreed > span {
-    line-height: 50px;
-}
-
-.image-section {
+  .image-section {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 30px;
-    padding: 0 50px;
-}
-
-.image-section > .thumbnail-image {
-    width: 315px;
-    height: 315px;
-    border: 1px solid black;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.image-section > .thumbnail-image > img {
-    width: auto;
-    height: 100%;
-}
+    grid-template-columns: repeat(auto-fit, minmax(270px,1fr));
+    grid-gap: 20px;
+  }
