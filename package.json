@@ -7,7 +7,7 @@
   "proxy": "http://api.dualcats.com",
   "homepage": "https://www.dualcats.com/",
   "dependencies": {
-    "aws-sdk": "^2.738.0",
+    "aws-sdk": "^2.814.0",
     "axios": "^0.20.0",
     "dotenv": "^8.2.0",
     "node-sass": "^4.14.1",
